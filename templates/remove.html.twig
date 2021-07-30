@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Supprimer cryptos{% endblock %}
+
+{% block nav %}
+
+    <a href="/"><i class="fas fa-times fa-2x"></i></a>
+    <h1>Supprimer un montant</h1>
+
+{% endblock %}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        <div class="input-icon">
+            {{ form_widget(form.crypto) }}
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="input-icon">
+            {{ form_widget(form.quantity) }}
+            <span>Quantité</span>
+            <i class="fas fa-coins"></i>
+        </div>    
+        <div class="input-hidden">
+            {{ form_row(form.price, { attr: {disabled:'disabled'}}) }}
+        </div>    
+
+        <input type="submit", value="Valider">
+    {{ form_end(form) }}
+
+{% endblock %}

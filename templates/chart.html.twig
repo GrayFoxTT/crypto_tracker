@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Rentabilité{% endblock %}
+
+{% block nav %}
+
+    <a href="/"><i class="fas fa-times fa-2x"></i></a>
+    <h1>Vos gains</h1>
+
+{% endblock %}
+
+{% block body %}
+
+{{ render_chart(chart, {'class': 'my-chart'}) }}
+
+{% endblock %}

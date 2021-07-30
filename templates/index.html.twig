@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Cryptos actifs{% endblock %}
+
+{% block nav %}
+    <div class="nav_index">    
+        <a href='/add' class="nav_icon"><i class="fas fa-plus fa-2x"></i></a>
+        <a href="/remove"><i class="fas fa-pen fa-2x"></i></a>       
+        <h1>Crypto Tracker</h1>
+    </div>
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        
+        {% if cryptoList is defined %}
+
+            <div class="profit"> 
+                <a href="/chart">
+                    {% if totalProfit > 0 %} 
+                        {{'+' ~ ' ' ~ totalProfit ~ ' ' ~'€'}} 
+                    {% else %}
+                        {{'-' ~ ' ' ~ totalProfit ~ ' ' ~'€'}}    
+                    {% endif %}
+                </a>  
+            </div>
+
+              
+            {% for cryptos in cryptoList %}
+                
+                <div class="index">
+                    <img src="{{ asset('img/' ~ cryptos.crypto ~ '.svg') }}"> 
+                    <span>{{ cryptoMin[cryptos.crypto] }}</span> 
+                    {{ '(' ~ cryptos.crypto|capitalize ~ ')' }}
+                    <div>
+                        {% if attribute(_context, cryptos.crypto) > 0 %}
+                            {{ '+' ~ ' ' ~ attribute(_context, cryptos.crypto) ~ ' ' ~ '%' }}    
+                        {% else %}
+                            {{ '-' ~ ' ' ~ attribute(_context, cryptos.crypto) ~ ' ' ~ '%' }}    
+                        {% endif %}
+                    </div>
+                </div>
+
+            {% endfor %}
+
+
+        {% endif %}
+
+        {% if connectionError is defined %}
+
+            {{ connectionError }}
+
+        {% endif %}
+
+    </div>
+
+{% endblock %}
