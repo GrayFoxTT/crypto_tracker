@@ -38,7 +38,7 @@
                         {% if attribute(_context, cryptos.crypto) > 0 %}
                             {{ '+' ~ ' ' ~ attribute(_context, cryptos.crypto) ~ ' ' ~ '%' }}    
                         {% else %}
-                            {{ '-' ~ ' ' ~ attribute(_context, cryptos.crypto) ~ ' ' ~ '%' }}    
+                            {{ '-' ~ ' ' ~ attribute(_context, cryptos.crypto)*-1 ~ ' ' ~ '%' }}    
                         {% endif %}
                     </div>
                 </div>
