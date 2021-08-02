@@ -24,7 +24,6 @@ a
 nav
 {
     border-bottom: 1px solid #585757;
-    margin-bottom: 50px;
 }
 
 nav h1
@@ -186,6 +185,8 @@ img
     font-size: 2em;
     font-weight: 900;
     margin-bottom: 70px;
+    padding: 70px;
+    background: bottom/1200px no-repeat url("../img/index_background.png");
 }
 
 .index
